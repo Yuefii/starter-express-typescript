@@ -2,6 +2,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 import express, { Request, Response } from 'express';
+import { router } from './router';
 
 dotenv.config();
 const app = express()
@@ -16,6 +17,7 @@ app.listen(port, () => {
 app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
+app.use(router)
 
 app.get("/ping", (req: Request, res: Response) => {
     res.status(200).json({
